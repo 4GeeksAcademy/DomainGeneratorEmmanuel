@@ -8,8 +8,8 @@ import "./assets/img/4geeks.ico";
 let pronoun = ["the", "our"];
 let adj = ["great", "big"];
 let noun = ["jogger", "racoon"];
-
-function randomDomain(array) {
+let dom = [".com", ".es", ".io", ".uy", ".net", ".us"];
+function randomPosition(array) {
   let randomPosition;
   randomPosition = Math.floor(Math.random() * array.length);
   return randomPosition;
@@ -18,12 +18,13 @@ function randomDomain(array) {
 function total() {
   let domainTotal = [];
   domainTotal =
-    pronoun[randomDomain(pronoun)] +
-    adj[randomDomain(adj)] +
-    noun[randomDomain(noun)] +
-    ".com";
+    pronoun[randomPosition(pronoun)] +
+    adj[randomPosition(adj)] +
+    noun[randomPosition(noun)] +
+    dom[randomPosition(dom)];
   return domainTotal;
 }
+
 let elementModify = document.querySelector("#changeText");
 
 elementModify.addEventListener("click", () => {
