@@ -8,25 +8,22 @@ import "./assets/img/4geeks.ico";
 let pronoun = ["the", "our"];
 let adj = ["great", "big"];
 let noun = ["jogger", "racoon"];
-let dom = [".com", ".es", ".io", ".uy", ".net", ".us"];
-function randomPosition(array) {
-  let randomPosition;
-  randomPosition = Math.floor(Math.random() * array.length);
-  return randomPosition;
-}
+let tld = [".com", ".es", ".io", ".uy", ".net", ".us"];
+let domainNames = [];
 
-function total() {
-  let domainTotal = [];
-  domainTotal =
-    pronoun[randomPosition(pronoun)] +
-    adj[randomPosition(adj)] +
-    noun[randomPosition(noun)] +
-    dom[randomPosition(dom)];
-  return domainTotal;
+for (let pro of pronoun) {
+  for (let ad of adj) {
+    for (let no of noun) {
+      for (let tl of tld) {
+        domainNames.push(`${pro}${ad}${no}${tl}`);
+      }
+    }
+  }
 }
 
 let elementModify = document.querySelector("#changeText");
 
 elementModify.addEventListener("click", () => {
-  elementModify.innerHTML = total();
+  elementModify.innerHTML =
+    domainNames[Math.floor(Math.random() * domainNames.length)];
 });
